@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -7,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { 
+    var user = this._router.url.slice(6);
+    var url = `https://api.github.com/search/users?q=${user}`
+    fetch(url)
+    .then(data=>data.json())
+    .then(data=>console.log(data))
+    .catch(err=>console.log(err))
+  }
 
+  //https://api.github.com/users/${user}/repos`
+  //https://api.github.com/search/users?q=${user}`
   ngOnInit() {
   }
 
