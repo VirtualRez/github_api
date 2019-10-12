@@ -10,10 +10,11 @@ export class HomeComponent implements OnInit {
 
   // FUNCTION for suggestions while user is typing --keyUp
   getSuggestion() {
-    console.log(this.word);
-    let endpoint = `https://api.github.com/users/"${this.word}`;
+    
+    let endpoint = `https://api.github.com/users?q=${this.word}`;
+    console.log(endpoint);
     fetch(endpoint, {method:'GET'})
-      .then((data) => { if (data.ok == true) { data.json() } })
+      .then((data) => data.json())
       .then((data) => console.log(data))
       .catch((err) => console.log(err))
   };
