@@ -1,15 +1,18 @@
 <div class="main">
   <div class="topBar">
     <div class="userInp">
-      <input [(ngModel)]="word" (keyup)="getSuggestion()" (keypress)="doThat($event)"type="text" name="search" id="search">
+      <input [(ngModel)]="word" (keyup)="getSuggestion()" (keypress)="doThat($event)" type="text" name="search"
+        id="search">
       <button (click)="getData()" type="submit"><i class="fa fa-search"></i></button>
     </div>
 
-  
+
   </div>
-
-<div>
-
-</div>
-
+  <div class="result">
+    <div *ngFor="let item of suggestions | slice:0:5;">
+      <div (click)="showUser()">
+        <p>{{item.login}}</p>
+      </div>
+    </div>
+  </div>
 </div>
