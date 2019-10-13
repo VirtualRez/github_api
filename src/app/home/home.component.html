@@ -1,18 +1,26 @@
 <div class="main">
-  <div class="topBar">
-    <div class="userInp">
-      <input [(ngModel)]="word" (keyup)="getSuggestion()" (keypress)="doThat($event)" type="text" name="search"
-        id="search">
-      <button (click)="getData()" type="submit"><i class="fa fa-search"></i></button>
+
+    <div class="topBar">
+
+        <div class="userInp">
+            <input [(ngModel)]="word" (keyup)="getSuggestion($event)" autocomplete="off" type="text" name="search"
+                id="search">
+            <button (click)="showUser()" type="submit"><i class="fa fa-search"></i></button>
+
+            ​
+        </div>
+        ​
     </div>
 
+    <div class="results">
+        <div class="userUnit">
+            <div *ngFor="let item of suggestions | slice:0:5;">
 
-  </div>
-  <div class="result">
-    <div *ngFor="let item of suggestions | slice:0:5;">
-      <div (click)="showUser()">
-        <p>{{item.login}}</p>
-      </div>
+                <div class="hoverable" (click)="showUser2($event)">
+                    <p>{{item.login}}</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+    <p *ngIf="noUser">User doesn't exists</p>
 </div>

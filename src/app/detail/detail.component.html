@@ -1,3 +1,23 @@
 <div class="main">
-
-</div>
+        <div *ngFor="let user of userName | slice:0:1;" class="userGrid">
+    ​
+            <div class="userInfo">
+                <img src={{user.avatar_url}} style="height:120px;" alt="">
+                <p>{{user.login}}</p><p >{{followersQuantity}}</p>
+                <p></p>
+            </div>
+    ​
+            <div *ngIf="userRepos">
+                <p>User has no repositories</p>
+            </div>
+            <div *ngFor="let repo of reposlist" class="userRepos">
+                <a href={{repo.html_url}}>
+                    <p>{{repo.name}}</p>
+                </a>
+    ​
+            </div>
+        </div>
+    </div>
+    <footer>
+        <button><a routerLink="home" routerLinkActive="active">Home</a></button>
+    </footer>

@@ -4,10 +4,19 @@ import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component'
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'user/:name', component: DetailComponent },
-  { path: '**', component: HomeComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/home' },
+  {
+    path: 'home', component: HomeComponent,
+    data: { animation: 'Home' }
+  },
+  {
+    path: 'user/:name', component: DetailComponent,
+    data: { animation: 'Detail' }
+  },
+  {
+    path: '**', component: HomeComponent,
+    data: { animation: 'Home' }
+  },
 ];
 
 @NgModule({
