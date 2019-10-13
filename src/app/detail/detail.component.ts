@@ -12,17 +12,18 @@ export class DetailComponent implements OnInit {
   gotRepos =false;
   followersUrl;
   followersQuantity;
+
   constructor(private _router: Router) {
     var user = this._router.url.slice(6);
     var url = `https://api.github.com/search/users?q=${user}`;
-    fetch(url)
+    fetch(url)//show the user name
       .then(data => data.json())
       .then(data => {
         this.userName = data.items;
         this.reposurl = this.userName[0].repos_url;
         this.followersUrl= this.userName[0].followers_url
         this.getFollowes(this.followersUrl);
-        fetch(this.reposurl)
+        fetch(this.reposurl)//show the repositories
           .then(data => data.json())
           .then(data => {
             this.reposlist=data;
@@ -32,7 +33,7 @@ export class DetailComponent implements OnInit {
         })
       .catch(err => console.log(err))
   }
-getFollowes(url){
+getFollowes(url){//show the number of followers
   fetch(url)
   .then(data=>data.json())
   .then(data=>this.followersQuantity=data.length)

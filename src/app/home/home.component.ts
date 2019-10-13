@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
     if (this.word.length <= 1) {//if have problems with github API, increase the number
       return
-    } else if (key.key == "Enter") {
+    } else if (key.key == "Enter") {//navigate to profile via ENTER key
       this.showUser()
     }
     else {
