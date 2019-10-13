@@ -6,12 +6,14 @@
                 <h4>{{user.login}}</h4>
                 <p style="font-weight: 500;"><span style="font-weight: 600; font-size: 1rem;">Followers:</span> {{followersQuantity}}</p>
             </div>
+
+            <h5>REPOSITORIES</h5>
     ​<div class="globalRepos">
             <div *ngIf="userRepos">
                 <p>User has no repositories</p>
             </div>
             <div *ngFor="let repo of reposlist" class="hoverable userRepos">
-                <a href={{repo.html_url}}>
+                <a href={{repo.html_url}} target="_blank">
                     <p>{{repo.name}}</p>
                 </a>
     ​

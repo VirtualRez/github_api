@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   //FUNCTION for suggestions while user is typing --keyUp
   getSuggestion(key) {
 
-    if (this.word.length <= 1) {
+    if (this.word.length <= 1) {//if have problems with github API, increase the number
       return
     } else if (key.key == "Enter") {
       this.showUser()
@@ -32,12 +32,11 @@ export class HomeComponent implements OnInit {
   }
   showUser() {//send to services
     let endpoint = `https://api.github.com/search/users?q=${this.word}+in:login`;
-    if (this._serv.requestUser(endpoint, this.word) == undefined) {
+    if (this._serv.requestUser(endpoint, this.word) === undefined) {
       this.noUser = true;
     }
   }
-
-  showUser2(event) {
+  showUser2(event) {//when the user click a suggestion it redirect to user profile
     this.word = event.target.textContent;
     this._router.navigateByUrl(`user/${this.word}`);
   }
