@@ -3,21 +3,22 @@
     ​
             <div class="userInfo">
                 <img src={{user.avatar_url}} style="height:120px;" alt="">
-                <p>{{user.login}}</p><p >{{followersQuantity}}</p>
-                <p></p>
+                <h4>{{user.login}}</h4>
+                <p style="font-weight: 500;"><span style="font-weight: 600; font-size: 1rem;">Followers:</span> {{followersQuantity}}</p>
             </div>
-    ​
+    ​<div class="globalRepos">
             <div *ngIf="userRepos">
                 <p>User has no repositories</p>
             </div>
-            <div *ngFor="let repo of reposlist" class="userRepos">
+            <div *ngFor="let repo of reposlist" class="hoverable userRepos">
                 <a href={{repo.html_url}}>
                     <p>{{repo.name}}</p>
                 </a>
     ​
             </div>
         </div>
+        </div>
     </div>
     <footer>
-        <button><a routerLink="home" routerLinkActive="active">Home</a></button>
+        <button><a style="color:white" routerLink="home" routerLinkActive="active">Home</a></button>
     </footer>
